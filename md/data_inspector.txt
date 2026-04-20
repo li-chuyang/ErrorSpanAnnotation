@@ -1,0 +1,182 @@
+(ErrorSpanAnnotation) chuyang-l@elm61:/cl/work11/chuyang-l/ErrorSpanAnnotation$ python data_inspector.py 
+开始全能数据集扫描...
+
+[1] 协议库定义概览:
+配置文件中共定义了 12 个协议:
+列表: ['MQM-1', 'ESA-1', 'ESAAI-1', 'ESAAI', 'ESA-2', 'ESAAI-2', 'WMT-MQM', 'WMT-DASQM', 'LLM', 'MQM-IAA', 'ESA-IAA', 'ESAAI-IAA']
+
+
+============================== 正在深入分析协议: ESA-1 ==============================
+样本规模:
+   - 总行数: 7637
+   - 包含错误标注的行数: 3087
+   - 坐标明确(可用于实验)的行数: 686
+   - 坐标缺失(missing)的行数: 2401
+
+领域分布 (Domains):
+social         2756
+news           1807
+speech         1469
+user_review    1209
+
+翻译系统分布 (Top 5 Systems):
+AIRC             557
+GPT4-5shot       557
+Lan-BridgeMT     557
+NLLB_Greedy      557
+NLLB_MBR_BLEU    557
+
+错误严重程度统计 (Span-level):
+minor        662
+major        529
+undecided      2
+
+🔍 抽样还原验证 (前 3 个可用样本):
+
+   样本 1 [ID: 11#cbsnews.120102#AIRC]
+   HYP: Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von V...
+      - 错误 1: [73:93] -> "der nach dem Schlage" (minor)
+
+   样本 2 [ID: 12#cbsnews.120102#AIRC]
+   HYP: Papa sagt, dass Tochter ihr eigenes Leben genommen hat, nachdem sie an der NJ-Schule beschimpft wurd...
+      - 错误 1: [85:93] -> "beschimp" (minor)
+
+   样本 3 [ID: 15#cbsnews.120102#AIRC]
+   HYP: Ein weiteres Mädchen außerhalb des Videorahmens lachte, als sie die Szene aufnahm. Zwei Erwachsene k...
+      - 错误 1: [213:219] -> "brullt" (minor)
+
+
+============================== 正在深入分析协议: ESA-2 ==============================
+样本规模:
+   - 总行数: 7637
+   - 包含错误标注的行数: 3087
+   - 坐标明确(可用于实验)的行数: 1292
+   - 坐标缺失(missing)的行数: 1795
+
+领域分布 (Domains):
+social         2756
+news           1807
+speech         1469
+user_review    1209
+
+翻译系统分布 (Top 5 Systems):
+AIRC             557
+GPT4-5shot       557
+Lan-BridgeMT     557
+NLLB_Greedy      557
+NLLB_MBR_BLEU    557
+
+错误严重程度统计 (Span-level):
+minor        2074
+major        1086
+undecided      29
+
+🔍 抽样还原验证 (前 3 个可用样本):
+
+   样本 1 [ID: 11#cbsnews.120102#AIRC]
+   HYP: Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von V...
+      - 错误 1: [82:117] -> "dem Schlagen von Video an Selbstmor" (minor)
+      - 错误 2: [119:124] -> "starb" (minor)
+
+   样本 2 [ID: 12#cbsnews.120102#AIRC]
+   HYP: Papa sagt, dass Tochter ihr eigenes Leben genommen hat, nachdem sie an der NJ-Schule beschimpft wurd...
+      - 错误 1: [85:95] -> "beschimpft" (major)
+
+   样本 3 [ID: 13#cbsnews.120102#AIRC]
+   HYP: Vier Jugendliche in New Jersey wurden im Zusammenhang mit dem Angriff eines 14-jährigen Mädchens ang...
+      - 错误 1: [119:140] -> "ihr eigenes Leben nah" (minor)
+      - 错误 2: [247:262] -> "Verschlechterun" (minor)
+      - 错误 3: [453:466] -> "erzählte CBS " (minor)
+
+
+============================== 正在深入分析协议: MQM-1 ==============================
+样本规模:
+   - 总行数: 7637
+   - 包含错误标注的行数: 3087
+   - 坐标明确(可用于实验)的行数: 1080
+   - 坐标缺失(missing)的行数: 2007
+
+领域分布 (Domains):
+social         2756
+news           1807
+speech         1469
+user_review    1209
+
+翻译系统分布 (Top 5 Systems):
+AIRC             557
+GPT4-5shot       557
+Lan-BridgeMT     557
+NLLB_Greedy      557
+NLLB_MBR_BLEU    557
+
+错误严重程度统计 (Span-level):
+minor    973
+major    732
+
+🔍 抽样还原验证 (前 3 个可用样本):
+
+   样本 1 [ID: 11#cbsnews.120102#AIRC]
+   HYP: Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von V...
+      - 错误 1: [0:154] -> "Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von Video an Selbstmord starben, wurden online veröffentlic" (minor)
+
+   样本 2 [ID: 12#cbsnews.120102#AIRC]
+   HYP: Papa sagt, dass Tochter ihr eigenes Leben genommen hat, nachdem sie an der NJ-Schule beschimpft wurd...
+      - 错误 1: [85:94] -> "beschimpf" (minor)
+
+   样本 3 [ID: 13#cbsnews.120102#AIRC]
+   HYP: Vier Jugendliche in New Jersey wurden im Zusammenhang mit dem Angriff eines 14-jährigen Mädchens ang...
+      - 错误 1: [54:60] -> "mit de" (major)
+      - 错误 2: [67:72] -> "ff ei" (minor)
+      - 错误 3: [149:152] -> "m V" (minor)
+      - 错误 4: [241:275] -> "wegen Verschlechterung des Angriff" (major)
+      - 错误 5: [396:484] -> "Der Staatsanwalt des Ocean County, Bradley D. Billhimer, erzählte CBS News in einer E-Ma" (major)
+      - 错误 6: [326:333] -> "rung an" (major)
+
+
+============================== 正在深入分析协议: LLM ==============================
+样本规模:
+   - 总行数: 7241
+   - 包含错误标注的行数: 2691
+   - 坐标明确(可用于实验)的行数: 2051
+   - 坐标缺失(missing)的行数: 640
+
+领域分布 (Domains):
+social         2756
+news           1807
+speech         1469
+user_review    1209
+
+翻译系统分布 (Top 5 Systems):
+AIRC             557
+GPT4-5shot       557
+Lan-BridgeMT     557
+NLLB_Greedy      557
+NLLB_MBR_BLEU    557
+
+错误严重程度统计 (Span-level):
+minor    2264
+major    1553
+
+🔍 抽样还原验证 (前 3 个可用样本):
+
+   样本 1 [ID: 11#cbsnews.120102#AIRC]
+   HYP: Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von V...
+      - 错误 1: [86:126] -> "Schlagen von Video an Selbstmord starben" (major)
+      - 错误 2: [135:156] -> "online veröffentlicht" (major)
+
+   样本 2 [ID: 12#cbsnews.120102#AIRC]
+   HYP: Papa sagt, dass Tochter ihr eigenes Leben genommen hat, nachdem sie an der NJ-Schule beschimpft wurd...
+      - 错误 1: [85:101] -> "beschimpft wurde" (minor)
+
+   样本 3 [ID: 13#cbsnews.120102#AIRC]
+   HYP: Vier Jugendliche in New Jersey wurden im Zusammenhang mit dem Angriff eines 14-jährigen Mädchens ang...
+      - 错误 1: [247:276] -> "Verschlechterung des Angriffs" (major)
+      - 错误 2: [318:330] -> "Verschwörung" (major)
+      - 错误 3: [453:461] -> "erzählte" (minor)
+
+
+============================== 跨协议一致性分析 ==============================
+在所选协议中，共有 2028 条句子是互相重叠的。
+这说明这些句子同时被 ESA-1, ESA-2, MQM-1 标注过，非常适合做对比实验！
+
+扫描结束！

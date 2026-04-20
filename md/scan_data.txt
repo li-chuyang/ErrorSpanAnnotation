@@ -1,0 +1,164 @@
+(ErrorSpanAnnotation) chuyang-l@elm61:/cl/work11/chuyang-l/ErrorSpanAnnotation$ python scan_dataset.py 
+Initializing AnnotationLoader...
+
+
+############################################################
+INSPECTING PROTOCOL: ESA-1
+############################################################
+
+[Summary Statistics]
+ - Total segments: 7637
+ - Segments with any error: 3087
+ - High-quality (numeric coordinates): 686
+
+[Distribution]
+Domains:
+ social         139
+news           130
+speech         119
+user_review     84
+Top Systems:
+ AIRC             66
+NLLB_MBR_BLEU    54
+ZengHuiMT        53
+Lan-BridgeMT     45
+ONLINE-G         39
+
+[Sample Inspection - Top 3]
+
+--- Sample 1 (Row Index: 11#cbsnews.120102#AIRC) ---
+MT: Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von V...
+   Error 1: [73:93] -> "der nach dem Schlage" | Severity: minor | Type: None
+
+--- Sample 2 (Row Index: 12#cbsnews.120102#AIRC) ---
+MT: Papa sagt, dass Tochter ihr eigenes Leben genommen hat, nachdem sie an der NJ-Schule beschimpft wurd...
+   Error 1: [85:93] -> "beschimp" | Severity: minor | Type: None
+
+--- Sample 3 (Row Index: 15#cbsnews.120102#AIRC) ---
+MT: Ein weiteres Mädchen außerhalb des Videorahmens lachte, als sie die Szene aufnahm. Zwei Erwachsene k...
+   Error 1: [213:219] -> "brullt" | Severity: minor | Type: None
+
+
+############################################################
+🔍 INSPECTING PROTOCOL: ESA-2
+############################################################
+
+[Summary Statistics]
+ - Total segments: 7637
+ - Segments with any error: 3087
+ - High-quality (numeric coordinates): 1292
+
+[Distribution]
+Domains:
+ news           329
+social         302
+speech         222
+user_review    156
+Top Systems:
+ AIRC             108
+Lan-BridgeMT      99
+NLLB_MBR_BLEU     90
+ZengHuiMT         89
+ONLINE-G          81
+
+[Sample Inspection - Top 3]
+
+--- Sample 1 (Row Index: 11#cbsnews.120102#AIRC) ---
+MT: Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von V...
+   Error 1: [82:117] -> "dem Schlagen von Video an Selbstmor" | Severity: minor | Type: None
+   Error 2: [119:124] -> "starb" | Severity: minor | Type: None
+
+--- Sample 2 (Row Index: 12#cbsnews.120102#AIRC) ---
+MT: Papa sagt, dass Tochter ihr eigenes Leben genommen hat, nachdem sie an der NJ-Schule beschimpft wurd...
+   Error 1: [85:95] -> "beschimpft" | Severity: major | Type: None
+
+--- Sample 3 (Row Index: 13#cbsnews.120102#AIRC) ---
+MT: Vier Jugendliche in New Jersey wurden im Zusammenhang mit dem Angriff eines 14-jährigen Mädchens ang...
+   Error 1: [119:140] -> "ihr eigenes Leben nah" | Severity: minor | Type: None
+   Error 2: [247:262] -> "Verschlechterun" | Severity: minor | Type: None
+   Error 3: [453:466] -> "erzählte CBS " | Severity: minor | Type: None
+
+
+############################################################
+🔍 INSPECTING PROTOCOL: MQM-1
+############################################################
+
+[Summary Statistics]
+ - Total segments: 7637
+ - Segments with any error: 3087
+ - High-quality (numeric coordinates): 1080
+
+[Distribution]
+Domains:
+ news           230
+social         208
+speech         164
+user_review    129
+Top Systems:
+ AIRC             91
+ZengHuiMT        91
+NLLB_MBR_BLEU    84
+Lan-BridgeMT     61
+NLLB_Greedy      57
+
+[Sample Inspection - Top 3]
+
+--- Sample 1 (Row Index: 11#cbsnews.120102#AIRC) ---
+MT: Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von V...
+   Error 1: [0:154] -> "Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von Video an Selbstmord starben, wurden online veröffentlic" | Severity: minor | Type: ['Accuracy', 'Mistranslation']
+
+--- Sample 2 (Row Index: 12#cbsnews.120102#AIRC) ---
+MT: Papa sagt, dass Tochter ihr eigenes Leben genommen hat, nachdem sie an der NJ-Schule beschimpft wurd...
+   Error 1: [85:94] -> "beschimpf" | Severity: minor | Type: ['Accuracy', 'Mistranslation']
+
+--- Sample 3 (Row Index: 13#cbsnews.120102#AIRC) ---
+MT: Vier Jugendliche in New Jersey wurden im Zusammenhang mit dem Angriff eines 14-jährigen Mädchens ang...
+   Error 1: [54:60] -> "mit de" | Severity: major | Type: ['Linguistic conventions', 'Grammar']
+   Error 2: [67:72] -> "ff ei" | Severity: minor | Type: ['Linguistic conventions', 'Grammar']
+   Error 3: [149:152] -> "m V" | Severity: minor | Type: ['Linguistic conventions', 'Grammar']
+   Error 4: [241:275] -> "wegen Verschlechterung des Angriff" | Severity: major | Type: ['Accuracy', 'Mistranslation']
+   Error 5: [396:484] -> "Der Staatsanwalt des Ocean County, Bradley D. Billhimer, erzählte CBS News in einer E-Ma" | Severity: major | Type: ['Style', 'Awkward style']
+   Error 6: [326:333] -> "rung an" | Severity: major | Type: ['Accuracy', 'Omission']
+
+
+############################################################
+🔍 INSPECTING PROTOCOL: LLM
+############################################################
+
+[Summary Statistics]
+ - Total segments: 7241
+ - Segments with any error: 2691
+ - High-quality (numeric coordinates): 2051
+
+[Distribution]
+Domains:
+ social         649
+news           600
+speech         553
+user_review    249
+Top Systems:
+ AIRC             189
+NLLB_Greedy      178
+NLLB_MBR_BLEU    174
+ZengHuiMT        171
+Lan-BridgeMT     167
+
+[Sample Inspection - Top 3]
+
+--- Sample 1 (Row Index: 11#cbsnews.120102#AIRC) ---
+MT: Vier Jugendliche, die beim Angriff auf den 14-Jährigen angeklagt wurden, der nach dem Schlagen von V...
+   Error 1: [86:126] -> "Schlagen von Video an Selbstmord starben" | Severity: major | Type: N/A
+   Error 2: [135:156] -> "online veröffentlicht" | Severity: major | Type: N/A
+
+--- Sample 2 (Row Index: 12#cbsnews.120102#AIRC) ---
+MT: Papa sagt, dass Tochter ihr eigenes Leben genommen hat, nachdem sie an der NJ-Schule beschimpft wurd...
+   Error 1: [85:101] -> "beschimpft wurde" | Severity: minor | Type: N/A
+
+--- Sample 3 (Row Index: 13#cbsnews.120102#AIRC) ---
+MT: Vier Jugendliche in New Jersey wurden im Zusammenhang mit dem Angriff eines 14-jährigen Mädchens ang...
+   Error 1: [247:276] -> "Verschlechterung des Angriffs" | Severity: major | Type: N/A
+   Error 2: [318:330] -> "Verschwörung" | Severity: major | Type: N/A
+   Error 3: [453:461] -> "erzählte" | Severity: minor | Type: N/A
+
+============================================================
+Inspection Finished.
