@@ -7,40 +7,6 @@ Encoder model frozen.
 /project/nlp-work11/chuyang-l/ErrorSpanAnnotation/.venv/lib/python3.10/site-packages/pytorch_lightning/core/saving.py:197: Found keys that are not in the model state dict but in the checkpoint: ['encoder.model.embeddings.position_ids']
 Extracting Neurons:  12%|█████████▎                                                                    | 82/686 [00:08<00:39, 15.21it/s]
 Warning: Could not align MT sequence for sample 374#elitr_minuting-14#GPT4-5shot. Skipping.
-Extracting Neurons:  34%|██████████████████████████                                                   | 232/686 [00:21<00:34, 13.09it/s]
-Warning: Could not align MT sequence for sample 380#elitr_minuting-16#ONLINE-A. Skipping.
-Extracting Neurons:  35%|███████████████████████████▏                                                 | 242/686 [00:22<00:35, 12.40it/s]
-Warning: Could not align MT sequence for sample 488#digital_ebook_purchase-3-en_0483721-221#ONLINE-A. Skipping.
-Extracting Neurons:  38%|█████████████████████████████▏                                               | 260/686 [00:24<00:32, 13.09it/s]
-Warning: Could not align MT sequence for sample 374#elitr_minuting-14#ONLINE-B. Skipping.
-Extracting Neurons:  44%|██████████████████████████████████                                           | 303/686 [00:28<00:40,  9.50it/s]
-Warning: Could not align MT sequence for sample 374#elitr_minuting-14#ONLINE-G. Skipping.
-Extracting Neurons:  45%|███████████████████████████████████                                          | 312/686 [00:29<00:40,  9.26it/s]
-Warning: Could not align MT sequence for sample 488#digital_ebook_purchase-3-en_0483721-221#ONLINE-G. Skipping.
-Extracting Neurons:  50%|██████████████████████████████████████▍                                      | 342/686 [00:32<00:34, 10.03it/s]
-Warning: Could not align MT sequence for sample 374#elitr_minuting-14#ONLINE-M. Skipping.
-Extracting Neurons:  50%|██████████████████████████████████████▌                                      | 344/686 [00:32<00:34,  9.91it/s]
-Warning: Could not align MT sequence for sample 488#digital_ebook_purchase-3-en_0483721-221#ONLINE-M. Skipping.
-Extracting Neurons:  54%|█████████████████████████████████████████▊                                   | 372/686 [00:35<00:24, 13.08it/s]
-Warning: Could not align MT sequence for sample 488#digital_ebook_purchase-3-en_0483721-221#ONLINE-W. Skipping.
-Extracting Neurons:  57%|████████████████████████████████████████████                                 | 393/686 [00:37<00:18, 15.55it/s]
-Warning: Could not align MT sequence for sample 360#elitr_minuting-1#ONLINE-Y. Skipping.
-Extracting Neurons:  63%|████████████████████████████████████████████████▋                            | 434/686 [00:41<00:19, 12.82it/s]
-Warning: Could not align MT sequence for sample 360#elitr_minuting-1#ZengHuiMT. Skipping.
-Extracting Neurons:  64%|█████████████████████████████████████████████████▎                           | 439/686 [00:42<00:26,  9.33it/s]
-Warning: Could not align MT sequence for sample 369#elitr_minuting-12#ZengHuiMT. Skipping.
-Extracting Neurons:  66%|██████████████████████████████████████████████████▌                          | 451/686 [00:43<00:20, 11.27it/s]
-Warning: Could not align MT sequence for sample 488#digital_ebook_purchase-3-en_0483721-221#ZengHuiMT. Skipping.
-Extracting Neurons:  68%|████████████████████████████████████████████████████▌                        | 468/686 [00:44<00:18, 11.90it/s]
-Warning: Could not align MT sequence for sample 488#digital_ebook_purchase-3-en_0483721-221#refA. Skipping.
-Extracting Neurons:  87%|███████████████████████████████████████████████████████████████████          | 598/686 [00:55<00:10,  8.74it/s]
-Warning: Could not align MT sequence for sample 488#digital_ebook_purchase-3-en_0483721-221#ONLINE-A#bad5. Skipping.
-Extracting Neurons:  91%|█████████████████████████████████████████████████████████████████████▊       | 622/686 [00:57<00:04, 13.16it/s]
-Warning: Could not align MT sequence for sample 374#elitr_minuting-14#ONLINE-M#bad4. Skipping.
-Extracting Neurons:  92%|███████████████████████████████████████████████████████████████████████▏     | 634/686 [00:58<00:03, 16.37it/s]
-Warning: Could not align MT sequence for sample 360#elitr_minuting-1#ONLINE-Y#bad2. Skipping.
-Extracting Neurons:  93%|███████████████████████████████████████████████████████████████████████▋     | 639/686 [00:58<00:03, 13.80it/s]
-Warning: Could not align MT sequence for sample 369#elitr_minuting-12#ZengHuiMT#bad5. Skipping.
 Extracting Neurons:  93%|███████████████████████████████████████████████████████████████████████▉     | 641/686 [00:58<00:03, 12.11it/s]
 Warning: Could not align MT sequence for sample 374#elitr_minuting-14#GPT4-5shot#bad4. Skipping.
 Extracting Neurons: 100%|█████████████████████████████████████████████████████████████████████████████| 686/686 [01:02<00:00, 10.96it/s]
@@ -49,7 +15,7 @@ Stacking tensors...
 Successfully saved 73681 aligned tokens to experiment_data.pt
 
 
-
+--------------------------------------ORIGINAL--------------------------------------
 (ErrorSpanAnnotation) chuyang-l@elm66:/cl/work11/chuyang-l/ErrorSpanAnnotation$ python regression.py 
 Loading binary data from experiment_data.pt...
 Loaded X with shape: (73681, 2560)
@@ -79,3 +45,54 @@ Rank 7: Neuron # 926 | Weight:   0.5322 | Role: Error Detector (+)
 Rank 8: Neuron #2559 | Weight:  -0.5305 | Role: Correctness Sentinel (-)
 Rank 9: Neuron #2357 | Weight:  -0.5017 | Role: Correctness Sentinel (-)
 Rank 10: Neuron #2186 | Weight:  -0.5016 | Role: Correctness Sentinel (-)
+
+
+--------------------------------------CHANCE RATE NO REGULARIZATION--------------------------------------
+(ErrorSpanAnnotation) chuyang-l@elm51:/cl/work11/chuyang-l/ErrorSpanAnnotation$ python regression.py 
+
+========================= 1. Probing Model Result =========================
+              precision    recall  f1-score   support
+
+           0     0.9921    0.8943    0.9407     67732
+           1     0.4329    0.9191    0.5886      5949
+
+    accuracy                         0.8963     73681
+   macro avg     0.7125    0.9067    0.7646     73681
+weighted avg     0.9470    0.8963    0.9122     73681
+
+
+========================= 2. Chance Rate (Most Frequent) =========================
+              precision    recall  f1-score   support
+
+           0     0.9193    1.0000    0.9579     67732
+           1     0.0000    0.0000    0.0000      5949
+
+    accuracy                         0.9193     73681
+   macro avg     0.4596    0.5000    0.4790     73681
+weighted avg     0.8450    0.9193    0.8806     73681
+
+
+========================= 3. Chance Rate (Random Stratified) =========================
+              precision    recall  f1-score   support
+
+           0     0.9197    0.9210    0.9203     67732
+           1     0.0859    0.0846    0.0852      5949
+
+    accuracy                         0.8534     73681
+   macro avg     0.5028    0.5028    0.5028     73681
+weighted avg     0.8524    0.8534    0.8529     73681
+
+
+========================= Top 10 Neurons =========================
+Neuron # 309 | Weight: 0.9704
+Neuron #2208 | Weight: 0.6513
+Neuron #1937 | Weight: -0.6014
+Neuron # 490 | Weight: -0.5745
+Neuron # 273 | Weight: -0.5620
+Neuron # 819 | Weight: -0.5589
+Neuron # 926 | Weight: 0.5322
+Neuron #2559 | Weight: -0.5305
+Neuron #2357 | Weight: -0.5017
+Neuron #2186 | Weight: -0.5016
+
+
