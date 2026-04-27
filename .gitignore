@@ -6,3 +6,8 @@ data/
 .venv/
 .vscode/
 scripts/
+*.png
+*.jpg
+*.jpeg
+*.json
+*.sh

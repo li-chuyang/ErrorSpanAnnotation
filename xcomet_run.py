@@ -23,12 +23,12 @@ def run_xcomet_inference():
     data = [
         {
             "src": "The basic principle of the project is to ensure safety.",
-            "mt": "这个项目的原则是基本确保安全的。",
+            "mt": "我是凑企鹅我是凑企鹅我是凑企鹅我是凑企鹅。",
             "ref": "这个项目基本的原则是确保安全。"
         },
         {
             "src": "The food was very delicious, but the service was slow.",
-            "mt": "这个食物非常美味，但服务很慢。",
+            "mt": "我是凑企鹅我是凑企鹅我是凑企鹅我是凑企鹅。",
             "ref": "这个食物很美味，但服务很慢。"
         }
     ]
