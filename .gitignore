@@ -11,6 +11,7 @@ data/
 md/
 .vscode/
 logistic_regression_output/
+manipulation_result
 scripts/
 experiment_data_output/
 extract_all_layers_output/
