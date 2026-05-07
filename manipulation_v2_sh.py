@@ -12,6 +12,10 @@ import csv
 warnings.filterwarnings("ignore")
 os.environ["LIT_LOGGER_LOG_LEVEL"] = "ERROR"
 
+os.chdir("/cl/work11/chuyang-l/ErrorSpanAnnotation")
+
+
+
 def get_args():
     parser = argparse.ArgumentParser(description="Multi-Neuron Manipulation Script")
     parser.add_argument("--neurons", type=str, required=True, help="Comma-separated list of neurons, e.g., 309,490,819")
@@ -20,14 +24,19 @@ def get_args():
     parser.add_argument("--samples", type=int, default=50, help="Number of samples to test")
     parser.add_argument("--dataset", type=str, default="ESA-1", help="Dataset name")
     parser.add_argument("--model", type=str, default="Unbabel/XCOMET-XL", help="Model name")
-    # 结果保存路径
     parser.add_argument("--res_dir", type=str, default="manipulation_result")
     return parser.parse_args()
 
 def get_manipulation_hook(neuron_indices, multiplier):
     def hook_fn(module, inputs, output):
-        hidden_states = output[0] if isinstance(output, tuple) else output
+        # 修复：加 .clone() 防止跨层共享内存导致干预叠加
+        if isinstance(output, tuple):
+            hidden_states = output[0].clone()
+        else:
+            hidden_states = output.clone()
+
         hidden_states[:, :, neuron_indices] = hidden_states[:, :, neuron_indices] * multiplier
+
         if isinstance(output, tuple):
             return (hidden_states,) + output[1:]
         return hidden_states
@@ -36,7 +45,7 @@ def get_manipulation_hook(neuron_indices, multiplier):
 def main():
     args = get_args()
     target_neurons = [int(n) for n in args.neurons.split(",")]
-    
+
     # 1. 确保结果文件夹存在
     if not os.path.exists(args.res_dir):
         os.makedirs(args.res_dir)
@@ -52,12 +61,15 @@ def main():
     model_path = download_model(args.model)
     model = load_from_checkpoint(model_path)
     model.eval()
-    if torch.cuda.is_available(): model.to("cuda")
+    if torch.cuda.is_available():
+        model.to("cuda")
+
+    gpus = 1 if torch.cuda.is_available() else 0
 
     # 4. Phase 1: Baseline
     with torch.no_grad():
-        baseline_pred = model.predict(data_list, batch_size=8, gpus=1 if torch.cuda.is_available() else 0)
-        baseline_scores = baseline_pred.scores
+        baseline_pred = model.predict(data_list, batch_size=32, gpus=gpus)
+        baseline_scores = np.array(baseline_pred.scores)
 
     # 5. Phase 2: Manipulation
     all_layers = model.encoder.model.encoder.layer
@@ -75,31 +87,31 @@ def main():
         handles.append(handle)
 
     with torch.no_grad():
-        manipulated_pred = model.predict(data_list, batch_size=8, gpus=1 if torch.cuda.is_available() else 0)
-        manipulated_scores = manipulated_pred.scores
+        manipulated_pred = model.predict(data_list, batch_size=32, gpus=gpus)
+        manipulated_scores = np.array(manipulated_pred.scores)
 
-    for h in handles: h.remove()
+    for h in handles:
+        h.remove()
 
     # 6. 计算结果
-    avg_base = np.mean(baseline_scores)
-    avg_mani = np.mean(manipulated_scores)
-    shift = avg_mani - avg_base
+    avg_base = float(np.mean(baseline_scores))
+    avg_mani = float(np.mean(manipulated_scores))
+    shift    = avg_mani - avg_base
 
-    # 7. 保存到 CSV (采用追加模式，方便画图脚本读取)
-    # 文件名示例: results_ESA-1_XCOMET-XL.csv
+    # 7. 保存到 CSV
     csv_name = f"results_{args.dataset}_{args.model.split('/')[-1]}.csv"
     csv_path = os.path.join(args.res_dir, csv_name)
-    
+
     file_exists = os.path.isfile(csv_path)
     with open(csv_path, mode='a', newline='') as f:
         writer = csv.writer(f)
         if not file_exists:
-            # 写入表头
             writer.writerow(['neuron_set', 'multiplier', 'layers', 'samples', 'baseline', 'manipulated', 'shift'])
-        # neuron_set 保存为字符串，如 "309+490" 方便画图分组
         neuron_label = "+".join(map(str, target_neurons))
-        writer.writerow([neuron_label, args.multiplier, args.layers, args.samples, 
-                         round(avg_base, 4), round(avg_mani, 4), round(shift, 4)])
+        writer.writerow([
+            neuron_label, args.multiplier, args.layers, args.samples,
+            round(avg_base, 4), round(avg_mani, 4), round(shift, 4)
+        ])
 
     print(f"Result Saved to {csv_path}: Neurons={target_neurons}, Multiplier={args.multiplier}, Shift={shift:+.4f}")
 

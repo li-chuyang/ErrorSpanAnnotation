@@ -9,6 +9,7 @@ explore_data.py
 data/
 .venv/
 md/
+logs/
 .vscode/
 logistic_regression_output/
 manipulation_result
