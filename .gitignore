@@ -12,8 +12,10 @@ md/
 logs/
 .vscode/
 logistic_regression_output/
+extract_multilabel_output
 manipulation_result
 scripts/
+multilabel_regression_output
 experiment_data_output/
 extract_all_layers_output/
 *.png
